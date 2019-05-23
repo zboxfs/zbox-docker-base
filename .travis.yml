@@ -1,0 +1,11 @@
+services:
+    - docker
+
+before_install:
+    - docker -v
+    - docker build --rm -t zboxfs/base .
+    - docker images
+
+script:
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - docker push zboxfs/base
