@@ -1,3 +1,7 @@
+dist: xenial
+
+language: rust
+
 services:
     - docker
 
