@@ -1,6 +1,7 @@
 # zbox-docker-base
 
-Base docker image for building [ZboxFS].
+Base docker image for building [ZboxFS]. This image is based on Ubuntu 16.04
+LTS and has Rust stable and libsodium included.
 
 This image is used as the base image for those images:
 
