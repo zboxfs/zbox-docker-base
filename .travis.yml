@@ -11,8 +11,10 @@ before_install:
   - docker images
 
 script:
+  # Publish when using '[publish docker]' keywords
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push zboxfs/base
+  - COMMIT_MESSAGE=$(git log --format=%B --no-merges -n 1 | tr -d '\n')
+  - if [[ ${COMMIT_MESSAGE} =~ "[publish docker]" ]]; then docker push zboxfs/base || exit 0; fi;
 
 notifications:
   email:
