@@ -12,7 +12,7 @@ script:
   # Publish when using '[publish docker]' keywords
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - COMMIT_MESSAGE=$(git log --format=%B --no-merges -n 1 | tr -d '\n')
-  - if [[ ${COMMIT_MESSAGE} =~ "[publish docker]" ]]; then ./build.sh && docker push zboxfs/base || exit 0; fi;
+  - if [[ ${COMMIT_MESSAGE} =~ "[publish docker]" ]]; then ./build.sh && docker push zboxfs/base; fi;
 
 notifications:
   email:
