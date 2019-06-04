@@ -19,8 +19,7 @@ This image is used as the base image for those images:
 After cloning this repo, use below commands to update upstream ZboxFS.
 
 ```sh
-cd zbox-docker-base/zbox
-git pull
+git submodule update --remote
 ```
 
 ## How to build this image
@@ -29,7 +28,6 @@ Make sure you've already updated to the latest upstream as above. Then use below
 command to build the image.
 
 ```sh
-cd zbox-docker-base
 ./build.sh
 ```
 
