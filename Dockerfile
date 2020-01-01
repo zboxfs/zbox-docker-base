@@ -2,18 +2,7 @@ FROM ubuntu:xenial
 
 RUN apt-get update && \
     apt-get install -yq sudo curl file wget make pkg-config libssl-dev git && \
-    apt-get remove -y gcc g++ cpp && \
     apt-get autoremove -y
-
-# install llvm and use clang as the default compiler
-RUN wget -q -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
-RUN echo 'deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-8 main\n\
-deb-src http://apt.llvm.org/xenial/ llvm-toolchain-xenial-8 main'\
-> /etc/apt/sources.list.d/llvm.list
-RUN apt-get update && \
-    apt-get install -yq clang-8 lldb-8 lld-8 && \
-    update-alternatives --install /usr/bin/cc cc /usr/bin/clang-8 100 && \
-    update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-8 100
 
 # install Rust
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
